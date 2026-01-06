@@ -20,10 +20,10 @@ async def receive_files(files: List[UploadFile]):
 
 
 def generate_embeddings(chunks):
-    model = SentenceTransformer("intfloat/e5-base-v2")
+    model = SentenceTransformer("sentence-transformers/multi-qa-MiniLM-L6-cos-v1")
     vectors = []
     for chunk in chunks:
-        embedding = model.encode("passage: " + chunk)
+        embedding = model.encode(chunk)
         vectors.append(embedding)
 
     return np.array(vectors)
