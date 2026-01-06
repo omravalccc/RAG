@@ -62,8 +62,8 @@ Question:
 
 
 def retrieval(question, k=5):
-    model = SentenceTransformer("sentence-transformers/multi-qa-MiniLM-L6-cos-v1")
-    query_embedding = model.encode(question)
+    model = SentenceTransformer("intfloat/e5-base-v2")
+    query_embedding = model.encode("query: " + question)
 
     results = top_k_chunks(query_embedding, k)
 
