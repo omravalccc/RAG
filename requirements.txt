@@ -1,9 +1,7 @@
 fastapi
-typing
+uvicorn
 sentence-transformers
 python-multipart
 numpy
-sqlite3
-os
 requests
-dotenv
+python-dotenv
