@@ -289,3 +289,8 @@ The repository maintains the following standards:
 - Detailed README documentation explaining all architectural decisions
 - Clear code organization and module separation
 - Evidence-based development decisions documented with timestamps and test results
+
+## Usage of AI:
+
+-Chatgpt for research and understanding concepts.
+-Antigravity for README.md creation
