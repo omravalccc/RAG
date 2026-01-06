@@ -1,6 +1,10 @@
 from fastapi import FastAPI, UploadFile, File
 from typing import List
 from docsreciever import receive_files, store_in_db
+from dotenv import load_dotenv
+from ansretrieval import retrieval
+import os
+load_dotenv()
 app = FastAPI(
     title="Lightweight RAG System",
     description="RAG system without LangChain or vector databases",
@@ -13,9 +17,9 @@ def health_check():
         "status": "ok",
         "components": {
             "api": "running",
-            "database": "unknown",
+            "database": "sqlite3",
             "embedding_model": "intfloat/e5-base-v2",
-            "llm": "not_configured"
+            "llm": "configured" if os.getenv("GEMINI_API_KEY") else "not_configured"
         }
     }
 
@@ -27,3 +31,8 @@ async def ingest(files: List[UploadFile] = File(...)):
         "status": "success",
         "documents_received": len(documents)
     }
+
+
+@app.post("/ask")
+def ask(question: str, k: int = 5):
+    return retrieval(question, k)

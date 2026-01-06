@@ -1,0 +1,9 @@
+fastapi
+typing
+sentence-transformers
+python-multipart
+numpy
+sqlite3
+os
+requests
+dotenv
